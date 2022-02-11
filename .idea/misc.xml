@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/drawable/ic_arrow_right.xml" value="0.38229166666666664" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_barcode_detail.xml" value="0.2046875" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_equipment.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_equipment_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_equipment_history.xml" value="0.2046875" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_herb.xml" value="0.3094488188976378" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_herb_detail.xml" value="0.3770833333333333" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_member.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/activity_temperature.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/dialog_progress.xml" value="0.2046875" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/recyclerView_equipment_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/recyclerview_equipment_history.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/recyclerview_equipment_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/recyclerview_herb_item.xml" value="0.33" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/layout/recyclerview_post_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/menu/equipment_detail_menu.xml" value="0.2046875" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/menu/equipment_menu.xml" value="0.2046875" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/app/src/main/res/menu/herb_menu.xml" value="0.36614583333333334" />
+        <entry key="..\:/HerbLinker/development/android/ManagerTest/libraries/libraries/src/main/res/layout/table_list_layout.xml" value="0.2046875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

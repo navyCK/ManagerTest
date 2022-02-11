@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CameraView">
+        <attr name="facing" format="reference" >
+            <enum name="NONE" value="0" />
+            <enum name="POSSIBLE" value="1" />
+            <enum name="FRONT" value="2" />
+            <enum name="BACK" value="3" />
+            <enum name="EXTERNAL" value="4" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="TableListBase">
+        <attr name="title" format="string"/>
+        <attr name="titleVisibility" format="boolean"/>
+    </declare-styleable>
+</resources>
