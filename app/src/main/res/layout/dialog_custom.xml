@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:padding="15dp" >
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:text="날짜 : "
+            />
+
+        <TextView android:id="@+id/txHerbDate"
+            android:layout_width="0dip"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:text="중량 :"
+            />
+
+        <EditText android:id="@+id/etHerbWeight"
+            android:layout_width="0dip"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="number"
+            android:imeOptions="actionDone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/herbInLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:orientation="horizontal" >
+
+        <TextView android:layout_width="0dip"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:text="구분 :"
+            />
+
+        <Spinner android:id="@+id/spHerbInType"
+            android:layout_width="0dip"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:entries="@array/herb_in_array"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/herbOutLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:orientation="horizontal" >
+
+        <TextView android:layout_width="0dip"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:text="구분 :"
+            />
+
+        <Spinner android:id="@+id/spHerbOutType"
+            android:layout_width="0dip"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:entries="@array/herb_out_array"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
