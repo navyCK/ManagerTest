@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="herb_in_array">herb_in_array
+        <item>구매</item>
+    </string-array>
+    <string-array name="herb_out_array">herb_out_array
+        <item>판매</item>
+        <item>반품</item>
+        <item>폐기</item>
+    </string-array>
+</resources>
