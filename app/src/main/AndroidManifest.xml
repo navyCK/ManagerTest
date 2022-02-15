@@ -30,6 +30,9 @@
         <activity android:name=".activity.HerbActivity"
                   android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activity.HerbDetailActivity"/>
+        <activity android:name=".activity.HerbRegistrationActivity"
+                  android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activity.HerbHistoryActivity"/>
         <activity android:name=".activity.TemperatureActivity"/>
         <activity android:name=".activity.MemberActivity"/>
         <activity android:name=".activity.BarcodeSampleActivity"/>
