@@ -2,6 +2,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView
+        android:id="@+id/herbDetailScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -10,18 +11,160 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/herbDetailToolbar"
+                android:background="@color/design_default_color_primary_dark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <LinearLayout
+                android:orientation="vertical"
                 android:padding="10dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="wrap_content">
                 <ImageView
+                    android:visibility="visible"
                     android:id="@+id/herbDetailImage"
                     android:src="@drawable/h1"
                     android:layout_width="wrap_content"
+                    android:layout_height="200dp"/>
+                <LinearLayout
+                    android:id="@+id/herbDetailImageTextLayout"
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="이미지 주소"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_weight="0.5"
+                                android:padding="10dp"
+                                android:id="@+id/herbDetailUpdateImage"
+                                android:src="@drawable/icon_herbal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <Button
+                                        android:layout_margin="5dp"
+                                        android:id="@+id/herbDetailImageEditClearButton"
+                                        android:text="제거"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+
+                                    <Button
+                                        android:layout_margin="5dp"
+                                        android:id="@+id/herbDetailImageApplyButton"
+                                        android:text="적용"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <EditText
+                                android:id="@+id/herbDetailImageEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="3"
+                                android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/herbDetailInOutLayout"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/herbInButton"
+                    android:text="입 고"
+                    android:background="@color/DarkSeaGreen"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/herbOutButton"
+                    android:text="출 고"
+                    android:background="@color/IndianRed"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/herbHistory"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="입/출고 내역"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@drawable/arrow_right"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="약재 바코드"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/herbDetailBarcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000000000"
+                    android:textStyle="bold" />
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailBarcodeEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000000000"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -41,6 +184,13 @@
                     android:layout_height="wrap_content"
                     android:text="감초"
                     android:textStyle="bold" />
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailNameEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="감초"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -54,10 +204,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:id="@+id/herbDetailTotalWeightTextLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/herbDetailTotalWeight"
+                        android:text="0"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="g"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailTotalWeightEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/herbDetailTotalWeightEdit"
                         android:text="0"
                         android:textStyle="bold"
                         android:textSize="30sp"
@@ -84,10 +254,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:id="@+id/herbDetailExpirationTextLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/herbDetailExpiration"
+                        android:text="0"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="일"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailExpirationEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/herbDetailExpirationEdit"
                         android:text="0"
                         android:textStyle="bold"
                         android:textSize="30sp"
@@ -114,10 +304,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:id="@+id/herbDetailStoragePeriodTextLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/herbDetailStoragePeriod"
+                        android:text="0"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="일"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailStoragePeriodEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/herbDetailStoragePeriodEdit"
                         android:text="0"
                         android:textStyle="bold"
                         android:textSize="30sp"
@@ -144,10 +354,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:id="@+id/herbDetailPurchasePriceTextLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/herbDetailPurchasePrice"
+                        android:text="0"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="원/g"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailPurchasePriceEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/herbDetailPurchasePriceEdit"
                         android:text="0"
                         android:textStyle="bold"
                         android:textSize="30sp"
@@ -174,6 +404,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:id="@+id/herbDetailSalesPriceTextLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
@@ -190,77 +421,114 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailSalesPriceEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/herbDetailSalesPriceEdit"
+                        android:text="0"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="원/g"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="특이사항"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/herbDetailSpecialNote"
+                    android:text="-"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/herbDetailSpecialNoteEdit"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/herbDetailUpDelLayout"
                 android:orientation="horizontal"
                 android:padding="20dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <TextView
-                    android:text="입/출고 내역"
-                    android:textColor="@color/black"
+                <Button
+                    android:id="@+id/herbDetailUpdateButton"
+                    android:text="수 정"
+                    android:background="@color/DarkSeaGreen"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-                <ImageView
-                    android:src="@drawable/arrow_right"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"/>
+                <Button
+                    android:id="@+id/herbDetailDeleteButton"
+                    android:text="삭 제"
+                    android:background="@color/IndianRed"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:id="@+id/herbDetailUpdateConfirmLayout"
+                android:orientation="horizontal"
+                android:visibility="gone"
                 android:padding="20dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <TextView
-                    android:text="약재 소개"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:text="쌍떡잎식물 콩목 콩과의 여러해살이풀. 말 그대로 단풀이다. 우리나라를 비롯한 아시아에서 주로 쓰는 감초는 Glycyrrhiza uralensis Fischer 종으로 유럽이나 미국에는 우랄 감초, 중국 감초라고 알려졌으며 약재로 주로 쓰이고, 유럽과 미국에서 주로 쓰는 리코리스(Liquorice 또는 licorice) 라고 부르는 종은 Glycyrrhiza glabra L. 으로 한국에서는 민감초 또는 유럽감초라고 부르며 약재로도 쓰지만 사탕이나 과자 생산에도 많이 쓰인다. 자주 이 두가지 종을 두루뭉실하게 감초라고 부르지만 엄밀하게 다른 종이므로 주의가 필요하다. 서양 리코리스는 이름을 보면 알겠지만 리큐르의 어원이 되었다. 애초에 리큐르가 약용술을 의미하던 거라서 감초가 많이 들어갔다."
+                <Button
+                    android:id="@+id/herbDetailUpdateConfirmButton"
+                    android:text="수 정"
+                    android:background="@color/DarkSeaGreen"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/herbDetailCancelButton"
+                    android:text="취 소"
+                    android:background="@color/Gray"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:text="용도"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:text="뿌리를 채취하여 한약재, 감미료 등으로 사용한다. 감초 안에 들어 있는 약용 성분은 다수의 질환에 효과가 있으며, 이게 빠진 한약은 매우 써서 먹기 힘들다고 한다. 어디에나 다 들어간다고 '약방에 감초'라는 속담이 있을 정도. 옛날 이야기에는 약방의 아내가 병자에게 멋모르고 감초를 줬는데 신기하게도 병이 나았다고 한다. 플라시보 효과일수도 있겠으나 어지간한 병에도 효과가 있다는 뜻."
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:text="효능"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:text="약재로서의 직접적인 효능은 위장 보호 및 독성 중화. 특히 다른 약재의 독을 중화하고 효능을 완화시켜 효능이 적절히 배합되도록 하는 역할을 주로 한다. 또한 맛이 달아 탕약의 역한 맛을 줄이는 역할도 한다. 그러므로 한방에서 약재 처방을 할 때 비교적 자주 들어간다. 약방의 감초라는 속담은 이것을 비유한 것으로 필수적이지는 않지만 꼭 끼어야 하는 것, 또는 어떤 일에나 빠짐없이 끼어드는 사람을 가리킬때도 쓰이며 그냥 '감초'라고만 하기도 한다. 한의학에서는 감초가 끌어당기는 성질을 갖고 있다고 본다. 그래서 서로 다른 재료들을 융합해서 시너지 효과를 최대화하기 위해 한약을 만들 때마다 감초를 넣는다고 한다."
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
