@@ -1,14 +1,17 @@
 package com.mediksystem.managertest.item;
 
-public class HerbItem {
+import java.util.ArrayList;
 
+public class HerbItem {
+    int type;
     // 이미지 URL
     String image;
     String barcode;
     String name;
     String company;
     // 원산지
-    String county_of_origin;
+    String country_of_origin;
+    String memo;
     // 보관기한
     int storage_period;
     // 사용기한
@@ -21,6 +24,10 @@ public class HerbItem {
     double purchase_price;
     // 판매가격
     double sales_price;
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public void setImage(String image) {
         this.image = image;
@@ -38,8 +45,12 @@ public class HerbItem {
         this.company = company;
     }
 
-    public void setCounty_of_origin(String county_of_origin) {
-        this.county_of_origin = county_of_origin;
+    public void setCountry_of_origin(String country_of_origin) {
+        this.country_of_origin = country_of_origin;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
     }
 
     public void setStorage_period(int storage_period) {
@@ -66,6 +77,11 @@ public class HerbItem {
         this.sales_price = sales_price;
     }
 
+
+    public int getType() {
+        return type;
+    }
+
     public String getImage() {
         return image;
     }
@@ -82,8 +98,12 @@ public class HerbItem {
         return company;
     }
 
-    public String getCounty_of_origin() {
-        return county_of_origin;
+    public String getCountry_of_origin() {
+        return country_of_origin;
+    }
+
+    public String getMemo() {
+        return memo;
     }
 
     public int getStorage_period() {

@@ -6,6 +6,10 @@
         android:id="@+id/menu_barcode"
         android:title="바코드"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/menu_register"
+        android:title="등록"
+        app:showAsAction="always"/>
 <!--    <group>-->
 <!--        <item-->
 <!--            android:id="@+id/menu_account"-->
