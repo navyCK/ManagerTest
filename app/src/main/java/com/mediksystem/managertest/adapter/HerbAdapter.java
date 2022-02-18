@@ -251,12 +251,12 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
         item.setPackage_quantity(package_quantity);
         item.setPackage_barcode(package_barcode);
 
-        if (package_size != null) {
-            for (int i=0; i<package_size.length; i++) {
-                addPackageItem(package_size[i], package_quantity[i], package_barcode[i]);
-            }
-            Log.e("패키지", packageItems.toString());
-        }
+//        if (package_size != null) {
+//            for (int i=0; i<package_size.length; i++) {
+//                addPackageItem(package_size[i], package_quantity[i], package_barcode[i]);
+//            }
+//            Log.e("패키지", packageItems.toString());
+//        }
 
 
         herbItemArrayList.add(item);
