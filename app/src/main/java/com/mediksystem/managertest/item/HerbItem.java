@@ -1,9 +1,8 @@
 package com.mediksystem.managertest.item;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class HerbItem {
-    int type;
     // 이미지 URL
     String image;
     String barcode;
@@ -25,9 +24,11 @@ public class HerbItem {
     // 판매가격
     double sales_price;
 
-    public void setType(int type) {
-        this.type = type;
-    }
+
+    // 약재 패키지 관련
+    int[] package_size;
+    int[] package_quantity;
+    String[] package_barcode;
 
     public void setImage(String image) {
         this.image = image;
@@ -77,9 +78,16 @@ public class HerbItem {
         this.sales_price = sales_price;
     }
 
+    public void setPackage_size(int[] package_size) {
+        this.package_size = package_size;
+    }
 
-    public int getType() {
-        return type;
+    public void setPackage_quantity(int[] package_quantity) {
+        this.package_quantity = package_quantity;
+    }
+
+    public void setPackage_barcode(String[] package_barcode) {
+        this.package_barcode = package_barcode;
     }
 
     public String getImage() {
@@ -130,5 +138,16 @@ public class HerbItem {
         return total_weight_of_inventory_storage;
     }
 
+    public int[] getPackage_size() {
+        return package_size;
+    }
+
+    public int[] getPackage_quantity() {
+        return package_quantity;
+    }
+
+    public String[] getPackage_barcode() {
+        return package_barcode;
+    }
 }
 
