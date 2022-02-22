@@ -2,13 +2,16 @@ package com.mediksystem.managertest.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,11 +19,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.mediksystem.managertest.R;
 import com.mediksystem.managertest.adapter.HerbAdapter;
 import com.mediksystem.managertest.databinding.ActivityHerbBinding;
+import com.mediksystem.managertest.databinding.RecyclerviewHerbPackageItemBinding;
 import com.mediksystem.managertest.dialog.ProgressDialog;
 import com.mediksystem.managertest.exception.BarcodeInvalidDetectingException;
 import com.mediksystem.managertest.exception.BarcodeNotSupportException;
@@ -36,6 +42,7 @@ import com.mediksystem.managertest.util.OnItemClick;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +57,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class HerbActivity extends NestableActivity {
     ActivityHerbBinding binding;
+
+    LayoutInflater inflater;
+    LinearLayout listLayout;
+    View header;
 
     ProgressDialog customProgressDialog;
 
@@ -317,16 +328,43 @@ public class HerbActivity extends NestableActivity {
     public void searchFilter(String searchText) {
         filterList.clear();
 
+        inflater = getLayoutInflater();
+        header = inflater.inflate(R.layout.recyclerview_herb_package_item, null);
+        if (header != null) {
+
+        }
+        listLayout = header.findViewById(R.id.listLayout);
+
+
+
+        // TODO 질문 1 : 규격이 2개 이하, 4개 이상일 때 검색 ?(현재는 규격의 개수가 3개일 때)
+        // TODO 질문 2 : 검색 시 HighLight(다른 레이아웃에 있는 listview item 색상 변경)
+
+
+
+
+
         for (int i=0; i < herbItemArrayList.size(); i++) {
+            Log.e(i+"번째", Arrays.toString(herbItemArrayList.get(i).getPackage_barcode()));
+
+            Log.e(i+"의 개수", String.valueOf(herbItemArrayList.get(i).getPackage_barcode().length));
+
             if (herbItemArrayList.get(i).getName().toLowerCase().contains(searchText.toLowerCase())
                     || herbItemArrayList.get(i).getBarcode().contains(searchText)
+
                     || herbItemArrayList.get(i).getPackage_barcode()[0].contains(searchText)
                     || herbItemArrayList.get(i).getPackage_barcode()[1].contains(searchText)
-                    || herbItemArrayList.get(i).getPackage_barcode()[2].contains(searchText)) {
-                filterList.add(herbItemArrayList.get(i));
+                    || herbItemArrayList.get(i).getPackage_barcode()[2].contains(searchText)
 
+//                    || Arrays.asList(herbItemArrayList.get(i).getPackage_barcode()).contains(searchText)
+
+                    ) {
+
+                filterList.add(herbItemArrayList.get(i));
+                listLayout.setBackgroundColor(Color.parseColor("#FAFAD2"));
 //                binding.herbRegister.setVisibility(View.GONE);
             } else {
+                listLayout.setBackgroundColor(Color.parseColor("#000000"));
 //                binding.herbRegister.setVisibility(View.VISIBLE);
             }
         }
@@ -349,12 +387,6 @@ public class HerbActivity extends NestableActivity {
             }
         }
         return super.dispatchTouchEvent(ev);
-    }
-
-    private List<HerbItem> buildItemList() {
-        List<HerbItem> itemList = new ArrayList<>();
-
-        return itemList;
     }
 
 

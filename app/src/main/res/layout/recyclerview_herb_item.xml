@@ -46,7 +46,6 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:id="@+id/herbName"
-                            android:text="약재"
                             android:textStyle="bold"
                             android:textSize="16sp"
                             android:layout_width="wrap_content"
@@ -105,7 +104,7 @@
         <LinearLayout
             android:id="@+id/expandLayout"
             android:orientation="vertical"
-            android:visibility="gone"
+            android:visibility="visible"
             android:background="@color/WhiteSmoke"
             android:padding="15dp"
             android:layout_width="match_parent"
@@ -120,31 +119,18 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="규격"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textStyle="bold" />
+
                     <View
-                        android:layout_margin="5dp"
-                        android:background="@color/Gray"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"/>
-                    <TextView
-                        android:id="@+id/size1"
-                        android:text="규격 1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/size2"
-                        android:text="규격 2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/size3"
-                        android:text="규격 3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="1dp"
+                        android:layout_margin="5dp"
+                        android:background="@color/Gray" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -163,21 +149,8 @@
                         android:background="@color/Gray"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"/>
-                    <TextView
-                        android:id="@+id/quantity1"
-                        android:text="수량 1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/quantity2"
-                        android:text="수량 2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/quantity3"
-                        android:text="수량 3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+
+
                 </LinearLayout>
                 <LinearLayout
                     android:gravity="center"
@@ -195,23 +168,8 @@
                         android:background="@color/Gray"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"/>
-                    <TextView
-                        android:id="@+id/barcode1"
-                        android:text="바코드1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/barcode2"
-                        android:text="바코드2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/barcode3"
-                        android:text="바코드3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
 
+                </LinearLayout>
 
             </LinearLayout>
             <LinearLayout
@@ -219,6 +177,10 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <ListView
+                    android:id="@+id/package_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"/>
                 <View
                     android:layout_margin="5dp"
                     android:background="@color/Gray"
@@ -246,10 +208,9 @@
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/package_recyclerview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+
+
+
             </LinearLayout>
 
         </LinearLayout>
@@ -258,4 +219,13 @@
 
 
     </LinearLayout>
+    
+    
+    
+    <data>
+        <variable
+            name="herb"
+            type="com.mediksystem.managertest.item.HerbItem" />
+        
+    </data>
 </layout>

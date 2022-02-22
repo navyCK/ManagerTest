@@ -9,104 +9,59 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
 import com.mediksystem.managertest.R;
 import com.mediksystem.managertest.activity.HerbDetailActivity;
+import com.mediksystem.managertest.databinding.RecyclerviewHerbItemBinding;
 import com.mediksystem.managertest.item.HerbItem;
 import com.mediksystem.managertest.item.HerbPackageItem;
 
 import java.util.ArrayList;
 
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
-    private ArrayList<HerbItem> herbItemArrayList = null;
-    private ArrayList<HerbPackageItem> packageItems = null;
+    ArrayList<HerbItem> herbItemArrayList;
+    ArrayList<HerbPackageItem> herbPackageItemArrayList;
 
-    RecyclerView packageRecyclerView = null;
-    HerbPackageAdapter adapter = null;
 
     public HerbAdapter(ArrayList<HerbItem> list) {
         herbItemArrayList = list;
     }
 
+    @NonNull
     @Override
     public HerbAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext() ;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
-
-
-        View view = inflater.inflate(R.layout.recyclerview_herb_item, parent, false);
-        HerbAdapter.ViewHolder vh = new HerbAdapter.ViewHolder(view);
-
-        return vh;
+        Context context = parent.getContext();
+        return new ViewHolder(RecyclerviewHerbItemBinding.inflate(LayoutInflater.from(context), parent, false));
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView barcode, name, company, country_of_origin, storage_period, expiration, memo,
-                storage_location, total_weight_of_inventory_storage, purchase_price, sales_price;
-        ImageView image;
-        ImageView btn_expand_toggle;
-        LinearLayout expand_layout;
-        TextView totalWeight, barcode1, barcode2, barcode3, size1, size2, size3, quantity1, quantity2, quantity3;
-        RecyclerView recyclerView;
-
+        private final RecyclerviewHerbItemBinding binding;
         boolean isCheck = true;
 
         @SuppressLint("ResourceType")
-        public ViewHolder(View itemView) {
-            super(itemView);
+        public ViewHolder(RecyclerviewHerbItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
 
-            image = itemView.findViewById(R.id.herbImage);
-            barcode = itemView.findViewById(R.id.herbBarcode);
-            name = itemView.findViewById(R.id.herbName);
-            company = itemView.findViewById(R.id.herbCompany);
-            country_of_origin = itemView.findViewById(R.id.herbCountry);
-
-            btn_expand_toggle = itemView.findViewById(R.id.btn_expand_toggle);
-
-            expand_layout = itemView.findViewById(R.id.expandLayout);
-
-            barcode1 = itemView.findViewById(R.id.barcode1);
-            barcode2 = itemView.findViewById(R.id.barcode2);
-            barcode3 = itemView.findViewById(R.id.barcode3);
-            size1 = itemView.findViewById(R.id.size1);
-            size2 = itemView.findViewById(R.id.size2);
-            size3 = itemView.findViewById(R.id.size3);
-            quantity1 = itemView.findViewById(R.id.quantity1);
-            quantity2 = itemView.findViewById(R.id.quantity2);
-            quantity3 = itemView.findViewById(R.id.quantity3);
-
-            totalWeight = itemView.findViewById(R.id.package_total_weight);
-
-            recyclerView = itemView.findViewById(R.id.package_recyclerview);
-
-//            storage_period = itemView.findViewById(R.id.herbStoragePeriod);
-//            expiration = itemView.findViewById(R.id.herbExpiration);
-//            total_weight_of_inventory_storage = itemView.findViewById(R.id.herbTotalWeight);
-//            purchase_price = itemView.findViewById(R.id.herbPurchasePrice);
-//            sales_price = itemView.findViewById(R.id.herbSalesPrice);
-
-//            storage_location = itemView.findViewById(R.id.herbStorage);
-
-            btn_expand_toggle.setOnClickListener(new View.OnClickListener() {
+            binding.btnExpandToggle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (isCheck) {
-                        btn_expand_toggle.setImageResource(R.drawable.circle_minus);
+                        binding.btnExpandToggle.setImageResource(R.drawable.circle_minus);
                         isCheck = false;
 
                         setExpandView(View.VISIBLE);
 
                     } else {
-                        btn_expand_toggle.setImageResource(R.drawable.circle_plus);
+                        binding.btnExpandToggle.setImageResource(R.drawable.circle_plus);
                         isCheck = true;
 
                         setExpandView(View.GONE);
@@ -117,22 +72,11 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
                 private void setExpandView(int visible) {
                     Animation animation = new AlphaAnimation(0, 1);
                     animation.setDuration(500);
-                    expand_layout.setVisibility(visible);
-                    expand_layout.setAnimation(animation);
+                    binding.expandLayout.setVisibility(visible);
+                    binding.expandLayout.setAnimation(animation);
                 }
 
             });
-
-            recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), 1));
-            LinearLayoutManager manager = new LinearLayoutManager(recyclerView.getContext());
-            manager.setReverseLayout(false);
-            manager.setStackFromEnd(true);
-            recyclerView.setLayoutManager(manager);
-
-            adapter = new HerbPackageAdapter(herbItemArrayList);
-            recyclerView.setAdapter(adapter);
-
-
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -144,8 +88,6 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
                         Log.e("입력된 position : ", String.valueOf(pos));
                         Log.d("getName : ", item.getName());
                         Log.d("getCompany : ", item.getCompany());
-
-
 
                         Context context = itemView.getContext();
 
@@ -177,9 +119,6 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
     }
 
 
-
-
-
     @Override
     public void onBindViewHolder(HerbAdapter.ViewHolder holder, int position) {
         HerbItem item = herbItemArrayList.get(position);
@@ -188,39 +127,40 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
                 .load(imageUrl)
                 .placeholder(R.drawable.icon_herbal)
                 .error(R.drawable.icon_herbal)
-                .into(holder.image);
+                .into(holder.binding.herbImage);
 
-        holder.barcode.setText(item.getBarcode());
-        holder.name.setText(item.getName());
-        holder.company.setText(item.getCompany());
-        holder.country_of_origin.setText(item.getCountry_of_origin());
+        holder.binding.herbBarcode.setText(item.getBarcode());
+        holder.binding.herbName.setText(item.getName());
+        holder.binding.herbCompany.setText(item.getCompany());
+        holder.binding.herbCountry.setText(item.getCountry_of_origin());
 
-        holder.size1.setText(String.valueOf(item.getPackage_size()[0]));
-        holder.size2.setText(String.valueOf(item.getPackage_size()[1]));
-        holder.size3.setText(String.valueOf(item.getPackage_size()[2]));
-        holder.quantity1.setText(String.valueOf(item.getPackage_quantity()[0]));
-        holder.quantity2.setText(String.valueOf(item.getPackage_quantity()[1]));
-        holder.quantity3.setText(String.valueOf(item.getPackage_quantity()[2]));
-        holder.barcode1.setText(item.getPackage_barcode()[0]);
-        holder.barcode2.setText(item.getPackage_barcode()[1]);
-        holder.barcode3.setText(item.getPackage_barcode()[2]);
+        herbPackageItemArrayList = new ArrayList<>();
 
-        double result = item.getPackage_size()[0]*item.getPackage_quantity()[0]
-                    + item.getPackage_size()[1]*item.getPackage_quantity()[1]
-                    + item.getPackage_size()[2]*item.getPackage_quantity()[2];
-        holder.totalWeight.setText(String.valueOf(result/1000));
+        for (int i = 0; i < item.getPackage_size().length; i++) {
+            herbPackageItemArrayList.add(new HerbPackageItem(item.getPackage_size()[i], item.getPackage_quantity()[i], item.getPackage_barcode()[i]));
+        }
+
+        ListView listView = holder.binding.packageListview;
+        HerbPackageAdapter adapter = new HerbPackageAdapter(listView.getContext(), herbPackageItemArrayList);
+        listView.setAdapter(adapter);
+//        setListViewHeightBasedOnChildren(listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
 
-//        holder.storage_period.setText(String.valueOf(item.getStorage_period()));
-//        holder.expiration.setText(String.valueOf(item.getExpiration()));
-//        holder.storage_location.setText(item.getStorage_location());
-//        holder.total_weight_of_inventory_storage.setText(String.valueOf(item.getTotal_weight_of_inventory_storage()));
-//        holder.purchase_price.setText(String.valueOf(item.getPurchase_price()));
-//        holder.sales_price.setText(String.valueOf(item.getSales_price()));
+        double result = 0;
 
+        for (int i = 0; i < item.getPackage_size().length; i++) {
+            result += item.getPackage_size()[i] * item.getPackage_quantity()[i];
+        }
+
+        holder.binding.packageTotalWeight.setText(String.valueOf(result / 1000));
 
     }
-
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -251,26 +191,8 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
         item.setPackage_quantity(package_quantity);
         item.setPackage_barcode(package_barcode);
 
-//        if (package_size != null) {
-//            for (int i=0; i<package_size.length; i++) {
-//                addPackageItem(package_size[i], package_quantity[i], package_barcode[i]);
-//            }
-//            Log.e("패키지", packageItems.toString());
-//        }
-
-
         herbItemArrayList.add(item);
 
-    }
-
-    public void addPackageItem(int size, int quantity, String barcode) {
-        HerbPackageItem item = new HerbPackageItem();
-
-        item.setSize(size);
-        item.setQuantity(quantity);
-        item.setBarcode(barcode);
-
-        packageItems.add(item);
     }
 
     @Override
@@ -281,6 +203,29 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
         return 0;
     }
 
+    // listview 높이 조정
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
 
+        int totalHeight = 0;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            //listItem.measure(0, 0);
+            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+
+        params.height = totalHeight;
+        listView.setLayoutParams(params);
+
+        listView.requestLayout();
+    }
 
 }

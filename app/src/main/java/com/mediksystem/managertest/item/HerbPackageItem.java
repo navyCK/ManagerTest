@@ -5,6 +5,12 @@ public class HerbPackageItem {
     int quantity;
     String barcode;
 
+    public HerbPackageItem(int size, int quantity, String barcode) {
+        this.size = size;
+        this.quantity = quantity;
+        this.barcode = barcode;
+    }
+
     public void setSize(int size) {
         this.size = size;
     }
