@@ -55,13 +55,13 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     if (isCheck) {
-                        binding.btnExpandToggle.setImageResource(R.drawable.circle_minus);
+                        binding.btnExpandToggle.setImageResource(R.drawable.icons8_up);
                         isCheck = false;
 
                         setExpandView(View.VISIBLE);
 
                     } else {
-                        binding.btnExpandToggle.setImageResource(R.drawable.circle_plus);
+                        binding.btnExpandToggle.setImageResource(R.drawable.icons8_down);
                         isCheck = true;
 
                         setExpandView(View.GONE);
@@ -69,7 +69,7 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
                     }
                 }
 
-                private void setExpandView(int visible) {
+                public void setExpandView(int visible) {
                     Animation animation = new AlphaAnimation(0, 1);
                     animation.setDuration(500);
                     binding.expandLayout.setVisibility(visible);
@@ -134,10 +134,13 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
         holder.binding.herbCompany.setText(item.getCompany());
         holder.binding.herbCountry.setText(item.getCountry_of_origin());
 
+
+
         herbPackageItemArrayList = new ArrayList<>();
 
         for (int i = 0; i < item.getPackage_size().length; i++) {
             herbPackageItemArrayList.add(new HerbPackageItem(item.getPackage_size()[i], item.getPackage_quantity()[i], item.getPackage_barcode()[i]));
+
         }
 
         ListView listView = holder.binding.packageListview;
@@ -227,5 +230,8 @@ public class HerbAdapter extends RecyclerView.Adapter<HerbAdapter.ViewHolder> {
 
         listView.requestLayout();
     }
+
+
+
 
 }

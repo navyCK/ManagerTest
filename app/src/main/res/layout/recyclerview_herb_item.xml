@@ -46,6 +46,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:id="@+id/herbName"
+                            android:text="약재명"
                             android:textStyle="bold"
                             android:textSize="16sp"
                             android:layout_width="wrap_content"
@@ -87,9 +88,9 @@
                         android:layout_height="match_parent">
                         <ImageView
                             android:id="@+id/btn_expand_toggle"
-                            android:src="@drawable/circle_plus"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"/>
+                            android:src="@drawable/icons8_down"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -104,7 +105,7 @@
         <LinearLayout
             android:id="@+id/expandLayout"
             android:orientation="vertical"
-            android:visibility="visible"
+            android:visibility="gone"
             android:background="@color/WhiteSmoke"
             android:padding="15dp"
             android:layout_width="match_parent"
@@ -123,7 +124,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="규격"
+                        android:text="규격(g)"
                         android:textStyle="bold" />
 
                     <View
@@ -140,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:text="수량"
+                        android:text="수량(개)"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
